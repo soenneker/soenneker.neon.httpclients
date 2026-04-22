@@ -1,20 +1,19 @@
 using Soenneker.Neon.HttpClients.Abstract;
-using Soenneker.Tests.FixturedUnit;
-using Xunit;
+using Soenneker.Tests.HostedUnit;
 
 namespace Soenneker.Neon.HttpClients.Tests;
 
-[Collection("Collection")]
-public sealed class NeonOpenApiHttpClientTests : FixturedUnitTest
+[ClassDataSource<Host>(Shared = SharedType.PerTestSession)]
+public sealed class NeonOpenApiHttpClientTests : HostedUnitTest
 {
     private readonly INeonOpenApiHttpClient _httpclient;
 
-    public NeonOpenApiHttpClientTests(Fixture fixture, ITestOutputHelper output) : base(fixture, output)
+    public NeonOpenApiHttpClientTests(Host host) : base(host)
     {
         _httpclient = Resolve<INeonOpenApiHttpClient>(true);
     }
 
-    [Fact]
+    [Test]
     public void Default()
     {
 
