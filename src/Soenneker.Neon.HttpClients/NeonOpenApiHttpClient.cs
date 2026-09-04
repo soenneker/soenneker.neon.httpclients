@@ -11,6 +11,7 @@ using Soenneker.Utils.HttpClientCache.Abstract;
 
 namespace Soenneker.Neon.HttpClients;
 
+/// <inheritdoc cref="INeonOpenApiHttpClient" />
 public sealed class NeonOpenApiHttpClient : INeonOpenApiHttpClient
 {
     private readonly IHttpClientCache _httpClientCache;
