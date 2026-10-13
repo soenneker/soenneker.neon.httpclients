@@ -30,7 +30,7 @@ public sealed class NeonOpenApiHttpClient : INeonOpenApiHttpClient
     {
         return _httpClientCache.Get(_clientId, (config: _config, baseUrl: _config["Neon:ClientBaseUrl"] ?? _prodBaseUrl), static state =>
         {
-            var apiKey = state.config.GetValueStrict<string>("Neon:ApiKey");
+            var apiKey = state.config.GetStringStrict("Neon:ApiKey");
             string authHeaderName = state.config["Neon:AuthHeaderName"] ?? "Authorization";
             string authHeaderValueTemplate = state.config["Neon:AuthHeaderValueTemplate"] ?? "Bearer {token}";
             string authHeaderValue = authHeaderValueTemplate.Replace("{token}", apiKey, StringComparison.Ordinal);
